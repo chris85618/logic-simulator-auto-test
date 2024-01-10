@@ -24,6 +24,6 @@ clean:
 	$(CC) -c $(CFLAGS) $(CXXFLAGS) $< -o $@
 
 test:
-	/bin/bash -c 'source .venv/bin/activate; pytest -vv --html=report.html --self-contained-html; deactivate'
-	
+	pytest -vv --html=report/report.html --self-contained-html
+
 .PHONY: all main clean test
