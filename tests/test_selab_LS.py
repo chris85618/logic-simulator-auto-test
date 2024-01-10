@@ -16,7 +16,7 @@ b'Command:Goodbye, thanks for using LS.'] == stdoutStrList
 
 @pytest.mark.timeout(10)
 def test_check_load():
-    result = subprocess.run(["./bin/main"], input=b"1\ntests/test_data/selab01.lcf\n1\ntests/test_data/selab9999.lcf\n4\n", capture_output=True, shell=True, check=True)
+    result = subprocess.run(["./bin/main"], input=b"1\ntests/test_data/selab01.lcf\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True, check=True)
     assert result.returncode == 0
 
     stdoutStrList = [line.strip() for line in result.stdout.splitlines() if len(line.strip()) > 0]
@@ -30,6 +30,21 @@ def test_check_load():
             b"3. Display truth table",
             b"4. Exit",
             b"Command:Please key in a file path: File not found or file format error!!",
+            b"1. Load logic circuit file",
+            b"2. Simulation",
+            b"3. Display truth table",
+            b"4. Exit",
+            b"Command:Please key in a file path: Circuit: 1 input pins, 1 output pins and 1 gates",
+            b'1. Load logic circuit file',
+            b'2. Simulation',
+            b'3. Display truth table',
+            b'4. Exit',
+            b'Command:Truth table:',
+            b'i | o',
+            b'1 | 1',
+            b'--+--',
+            b'0 | 1',
+            b'1 | 0',
             b"1. Load logic circuit file",
             b"2. Simulation",
             b"3. Display truth table",
@@ -263,28 +278,28 @@ def test_selab06():
                              b'Command:Goodbye, thanks for using LS.']
 
 
-# @pytest.mark.timeout(10)
-# def test_selab07():
-#     result = subprocess.run(["./bin/main"], input=b"1\ntests/test_data/selab07.lcf\n3\n4\n", capture_output=True, shell=True, check=True)
-#     assert result.returncode == 0
-#     stdoutStrList = [line.strip() for line in result.stdout.splitlines() if len(line.strip()) > 0]
-#     assert stdoutStrList == [b'1. Load logic circuit file',
-#                              b'2. Simulation',
-#                              b'3. Display truth table',
-#                              b'4. Exit',
-#                              b'Command:Please key in a file path: Circuit: 1 input pins, 1 output pins and 0 gates',
-#                              b'1. Load logic circuit file',
-#                              b'2. Simulation',
-#                              b'3. Display truth table',
-#                              b'4. Exit',
-#                              b'Command:Truth table:',
-#                              b'i | o',
-#                              b'1 | 1',
-#                              b'--+--',
-#                              b'0 | 0',
-#                              b'1 | 1',
-#                              b'1. Load logic circuit file',
-#                              b'2. Simulation',
-#                              b'3. Display truth table',
-#                              b'4. Exit',
-#                              b'Command:Goodbye, thanks for using LS.']
+@pytest.mark.timeout(10)
+def test_selab07():
+    result = subprocess.run(["./bin/main"], input=b"1\ntests/test_data/selab07.lcf\n3\n4\n", capture_output=True, shell=True, check=True)
+    assert result.returncode == 0
+    stdoutStrList = [line.strip() for line in result.stdout.splitlines() if len(line.strip()) > 0]
+    assert stdoutStrList == [b'1. Load logic circuit file',
+                             b'2. Simulation',
+                             b'3. Display truth table',
+                             b'4. Exit',
+                             b'Command:Please key in a file path: Circuit: 1 input pins, 1 output pins and 0 gates',
+                             b'1. Load logic circuit file',
+                             b'2. Simulation',
+                             b'3. Display truth table',
+                             b'4. Exit',
+                             b'Command:Truth table:',
+                             b'i | o',
+                             b'1 | 1',
+                             b'--+--',
+                             b'0 | 0',
+                             b'1 | 1',
+                             b'1. Load logic circuit file',
+                             b'2. Simulation',
+                             b'3. Display truth table',
+                             b'4. Exit',
+                             b'Command:Goodbye, thanks for using LS.']
