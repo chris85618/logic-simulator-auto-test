@@ -2,9 +2,9 @@
 
 ## Introduction
 
-* This program is to test the test for new comers to enter SELab/SDTLab automatically.
+* This program is to automatically test the homework for new comers to enter SELab/SDTLab.
 * There are several test cases for the behavior and memory leak issues.
-* Please **CHECK the TEST REPORTS MANUALLY** that the result test failed may be not fully matching to the given question(specification).
+* Please **CHECK the TEST REPORTS MANUALLY** that the reason test failed might result from the output of their result not fully matching to the given question(specification).
 
 
 ## Get Started
