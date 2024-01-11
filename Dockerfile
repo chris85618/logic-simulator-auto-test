@@ -15,8 +15,10 @@ WORKDIR ${SOURCE_PATH}
 COPY requirements.txt ${SOURCE_PATH}
 COPY Makefile ${SOURCE_PATH}
 RUN make virtualenv
-COPY . /source
+COPY . ${SOURCE_PATH}
 
-VOLUME [ "/source/src" ]
-VOLUME [ "/source/report" ]
-CMD make
+VOLUME [ "${SOURCE_PATH}/src" ]
+VOLUME [ "${SOURCE_PATH}/report" ]
+
+ENTRYPOINT ["/source/docker-entrypoint.sh"]
+CMD ["make"]
