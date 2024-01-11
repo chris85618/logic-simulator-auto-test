@@ -26,7 +26,7 @@
 
 #### With Docker
 
-1. docker run -v <source-code-of-a-new-comer>:/source/src -v <report-directory>:/source/report --user ${UID}:${PID} -t --rm chris85618/logic-simulator-auto-test
+1. docker run -v <source-code-of-the-new-comer>:/source/src -v <report-directory>:/source/report -v <binary-directory>:/source/bin --user $(id -u):$(id -g) -t --rm chris85618/logic-simulator-auto-test
 
 #### With Linux commands/WSL
 

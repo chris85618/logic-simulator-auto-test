@@ -40,6 +40,6 @@ virtualenv: $(VIRTUALENV_PATH)
 
 $(VIRTUALENV_PATH):
 	python3 -m venv $(VIRTUALENV_PATH)
-	. $(VIRTUALENV_PATH)/bin/activate && pip3 install --upgrade pip && pip3 install -r requirements.txt && deactivate
+	. $(VIRTUALENV_PATH)/bin/activate && pip3 --no-cache-dir install --upgrade pip && pip3 --no-cache-dir install -r requirements.txt && deactivate
 
 .PHONY: all main clean test cleanall virtualenv cleanvirtualenv
