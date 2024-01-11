@@ -1,15 +1,15 @@
 FROM python:3.11-alpine
 
-RUN apk add --no-cache alpine-sdk bash
+RUN apk add --no-cache alpine-sdk bash py3-virtualenv
 
 ARG SOURCE_PATH="/source"
-ARG REQUIREMENTS_PATH="${SOURCE_PATH}/requirements.txt"
 
 RUN mkdir -p ${SOURCE_PATH}
 WORKDIR ${SOURCE_PATH}
 
-COPY requirements.txt ${REQUIREMENTS_PATH}
-RUN pip3 install --upgrade pip && pip3 install -r ${REQUIREMENTS_PATH}
+COPY requirements.txt ${SOURCE_PATH}
+COPY Makefile ${SOURCE_PATH}
+RUN make virtualenv
 COPY . /source
 
 VOLUME [ "/source/src" ]

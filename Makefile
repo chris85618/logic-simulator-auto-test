@@ -9,7 +9,7 @@ SOURCES := $(wildcard *.cpp) $(wildcard src/*.cpp) $(wildcard src/*/*.cpp)
 OBJECTS := $(patsubst %.cpp,%.o,$(SOURCES))
 HEADERS := $(wildcard *.hpp) $(wildcard src/*.hpp) $(wildcard src/*/*.hpp) $(wildcard *.h) $(wildcard src/*.h) $(wildcard src/*/*.h)
 
-all: main test
+all: virtualenv main test
 
 main: $(BIN)
 
@@ -19,11 +19,18 @@ $(BIN): $(OBJECTS)
 
 clean:
 	rm -f $(OBJECTS) $(BIN) $(TEST_OBJECTS) $(TEST_BIN)
+	rm -rf .venv
 
 %.o: %.cpp $(HEADERS)
 	$(CC) -c $(CFLAGS) $(CXXFLAGS) $< -o $@
 
 test:
-	pytest -vv --html=report/report.html --self-contained-html
+	. .venv/bin/activate && pytest -vv --html=report/report.html --self-contained-html; deactivate
 
-.PHONY: all main clean test
+virtualenv: .venv
+
+.venv:
+	python3 -m venv .venv
+	. .venv/bin/activate && pip3 install --upgrade pip && pip3 install -r requirements.txt && deactivate
+
+.PHONY: all main clean test virtualenv

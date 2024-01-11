@@ -33,9 +33,7 @@
 1. Sync this repository.
 2. `cd logic-simulator-auto-test`
 3. Place the source codes of a new comer into `src/`
-4. Enter virtual environment: `source .venv/bin/activate`
-5. Run `make`
-6. Exit from the virtual environment: `deactivate`
+4. Run `make`
 
 ### Check the test report
 
