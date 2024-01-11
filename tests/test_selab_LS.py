@@ -316,7 +316,7 @@ def test_selab07():
                              b'Command:Goodbye, thanks for using LS.']
 
 @pytest.mark.timeout(10)
-def test_no_any_memory_leak():
+def test_no_memory_leak_error():
     result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab06.lcf\n2\n0\n1\n0\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
     print(result.stdout)
 
@@ -325,7 +325,7 @@ def test_no_any_memory_leak():
     assert result.stderr.endswith(b"ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)\n")
 
 @pytest.mark.timeout(10)
-def test_no_any_memory_leak_error():
+def test_no_any_memory_leak():
     result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab06.lcf\n2\n0\n1\n0\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
     print(result.stdout)
 
