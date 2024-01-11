@@ -4,7 +4,12 @@ RUN apk add --no-cache alpine-sdk bash py3-virtualenv valgrind
 
 ARG SOURCE_PATH="/source"
 
-RUN mkdir -p ${SOURCE_PATH}
+# Setup a normal user
+ARG USERNAME="tester"
+RUN adduser -D ${USERNAME}
+
+RUN mkdir -p ${SOURCE_PATH} && chown ${USERNAME} ${SOURCE_PATH}
+USER ${USERNAME}
 WORKDIR ${SOURCE_PATH}
 
 COPY requirements.txt ${SOURCE_PATH}
