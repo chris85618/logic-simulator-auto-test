@@ -1,6 +1,6 @@
 FROM python:3.11-alpine
 
-RUN apk add --no-cache alpine-sdk bash py3-virtualenv
+RUN apk add --no-cache alpine-sdk bash py3-virtualenv valgrind
 
 ARG SOURCE_PATH="/source"
 

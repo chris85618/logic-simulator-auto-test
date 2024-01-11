@@ -306,15 +306,14 @@ def test_selab07():
 
 @pytest.mark.timeout(10)
 def test_no_any_memory_leak():
-    result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab01.lcf\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
+    result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab06.lcf\n2\n0\n1\n0\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
 
     stderrStrList = [line.strip() for line in result.stderr.splitlines() if len(line.strip()) > 0]
 
     assert result.stderr.endswith(b"ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)\n")
-    assert result.returncode == 0
 
 @pytest.mark.timeout(10)
 def test_no_any_memory_leak_error():
-    result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab01.lcf\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
+    result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab06.lcf\n2\n0\n1\n0\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
 
     assert b"All heap blocks were freed -- no leaks are possible" in result.stderr

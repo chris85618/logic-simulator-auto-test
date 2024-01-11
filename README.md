@@ -19,8 +19,8 @@
 
 #### With Linux commands/WSL
 
-1. Please install **C++ build environments**, **GNU make**, **Python3**, and **Virtual Environemnt for Python3** to execute these test cases.
-    * For example, you can install `build-essential`, `make`, `python3`, and `python3-virtualenv` for Ubuntu.
+1. Please install **C++ build environments**, **GNU make**, **Python3**, **Virtual Environemnt for Python3**, and `Valgrind` to execute these test cases.
+    * Take Ubuntu for an example, you can use `sudo apt update; sudo apt install build-essential make python3 python3-virtualenv valgrind` to install those packages.
 
 ### Execute Tests
 
