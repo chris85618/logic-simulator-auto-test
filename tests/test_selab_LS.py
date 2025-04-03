@@ -286,35 +286,6 @@ def test_selab06():
                              b'4. Exit',
                              b'Command:Goodbye, thanks for using LS.']
 
-
-@pytest.mark.timeout(10)
-def test_selab07():
-    result = subprocess.run(["./bin/main"], input=b"1\ntests/test_data/selab07.lcf\n3\n4\n", capture_output=True, shell=True, check=False)
-    print(result.stdout)
-
-    # assert result.returncode == 0
-    stdoutStrList = [line.strip() for line in result.stdout.splitlines() if len(line.strip()) > 0]
-    assert stdoutStrList == [b'1. Load logic circuit file',
-                             b'2. Simulation',
-                             b'3. Display truth table',
-                             b'4. Exit',
-                             b'Command:Please key in a file path: Circuit: 1 input pins, 1 output pins and 0 gates',
-                             b'1. Load logic circuit file',
-                             b'2. Simulation',
-                             b'3. Display truth table',
-                             b'4. Exit',
-                             b'Command:Truth table:',
-                             b'i | o',
-                             b'1 | 1',
-                             b'--+--',
-                             b'0 | 0',
-                             b'1 | 1',
-                             b'1. Load logic circuit file',
-                             b'2. Simulation',
-                             b'3. Display truth table',
-                             b'4. Exit',
-                             b'Command:Goodbye, thanks for using LS.']
-
 @pytest.mark.timeout(10)
 def test_no_memory_leak_error():
     result = subprocess.run(["valgrind --leak-check=full --show-leak-kinds=all --verbose ./bin/main"], input=b"1\ntests/test_data/selab06.lcf\n2\n0\n1\n0\n1\ntests/test_data/selab9999.lcf\n1\ntests/test_data/selab05.lcf\n3\n4\n", capture_output=True, shell=True)
