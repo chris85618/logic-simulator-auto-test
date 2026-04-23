@@ -12,10 +12,10 @@ RUN mkdir -p ${SOURCE_PATH} && chown ${USERNAME} ${SOURCE_PATH}
 USER ${USERNAME}
 WORKDIR ${SOURCE_PATH}
 
-COPY requirements.txt ${SOURCE_PATH}
-COPY Makefile ${SOURCE_PATH}
+COPY --chown=${USERNAME}:${USERNAME} requirements.txt ${SOURCE_PATH}
+COPY --chown=${USERNAME}:${USERNAME} Makefile ${SOURCE_PATH}
 RUN make virtualenv
-COPY . ${SOURCE_PATH}
+COPY --chown=${USERNAME}:${USERNAME} . ${SOURCE_PATH}
 
 VOLUME [ "${SOURCE_PATH}/src" ]
 VOLUME [ "${SOURCE_PATH}/report" ]
